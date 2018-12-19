@@ -71,15 +71,14 @@ service<http:Service> orderService bind listener {
         methods: ["GET"],
         path: "/order/pending"
     }
-    getPending(endpoint client, http:Request req, string orderId) {
+    getPending(endpoint client, http:Request req) {
         json[] orderObjs;
         int c = 0;
         foreach orderObj in ordersMap {
             if(!orderObj.locked){
                 orderObjs[c] = check <json>orderObj;
                 c++;
-            }
-            
+            }    
         }
         if (orderObjs == null) {
             orderObjs[0] = "No pending orders.";
@@ -91,6 +90,49 @@ service<http:Service> orderService bind listener {
 
         // Send response to the client.
         _ = client->respond(response);
-
     }
+
+    //update the order if not locked
+    @http:ResourceConfig {
+        methods: ["PUT"],
+        path: "/order"
+    }
+    updateOrder(endpoint client, http:Request req) {
+        json orderReq = check req.getJsonPayload();
+        string orderId = check <string>orderReq.orderId;
+        http:Response response;
+        json payload = {};
+
+        pobo:Order orderObj = ordersMap[orderId];
+        if(orderObj != null) {
+            if(!orderObj.locked) {
+                if(orderReq.drinkName != null) {
+                    orderObj.drinkName = check <string>orderReq.drinkName;
+                }
+                if(orderReq.additions != null){
+                    orderObj.additions = check <string>orderReq.additions;
+                }
+
+                payload = { status: "Order Updated.", orderId: orderObj.orderId };
+                response.setJsonPayload(payload);
+                response.statusCode = 201;
+                response.setHeader("Location", "http://localhost:9090/ordersvc/order/" +
+                    orderObj.orderId);
+
+            } else {
+                payload = { status: "Order cannot be updated.", orderId: orderObj.orderId };
+                response.setJsonPayload(payload);
+                response.statusCode = 423;
+                response.setHeader("Location", "http://localhost:9090/ordersvc/order/" +
+                orderObj.orderId);
+            }
+        } else{
+            payload = { status: "Order not found.", orderId: orderObj.orderId };
+            response.setJsonPayload(payload);
+            response.statusCode = 404;
+        }
+
+         _ = client->respond(response);
+    }
+    
 }
