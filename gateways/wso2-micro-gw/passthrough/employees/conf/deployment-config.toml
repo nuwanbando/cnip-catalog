@@ -1,9 +1,9 @@
 [docker]
   [docker.dockerConfig]
-    enable = false
-    #name = ""
-    #registry = ''
-    #tag = ''
+    enable = true
+    name = 'employees'
+    registry = 'nuwanbando'
+    tag = 'v1'
     #buildImage = ''
     #dockerHost = ''
     #dockerCertPath = ''
@@ -14,14 +14,14 @@
     #username = ''
     #password = ''
   [docker.dockerCopyFiles]
-    enable = false
+    enable = true
     [[docker.dockerCopyFiles.files]]
-        source = ''
-        target = ''
-        isBallerinaConf = false
+        source = '/Users/nuwanbando/dev/trunk/micro-gw/toolkit/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf'
+        target = '/home/ballerina/conf/micro-gw.conf'
+        isBallerinaConf = true
 [kubernetes]
   [kubernetes.kubernetesDeployment]
-    enable = true
+    enable = false
     name = 'employees-svc'
     #labels = ''
     #replicas = ''
@@ -47,13 +47,13 @@
     #baseImage = ''
     #singleYAML = ''
   [kubernetes.kubernetesService]
-    enable = true
+    enable = false
     name = 'employees-svc'
     #labels = ''
     serviceType = 'NodePort'
     #port = ''
   [kubernetes.kubernetesIngress]
-    enable = true
+    enable = false
     name = 'employees-svc'
     #labels = ''
     hostname = 'nuwanbando.com'

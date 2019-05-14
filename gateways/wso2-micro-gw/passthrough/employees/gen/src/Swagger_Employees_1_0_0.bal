@@ -3,13 +3,13 @@ import ballerina/http;
 import ballerina/config;
 import ballerina/time;
 
-import ballerinax/kubernetes;
+
 
 import wso2/gateway;
 
 
     http:Client Swagger_Employees_1_0_0_prod = new (
-    gateway:retrieveConfig("1b91c434-609a-41dc-be16-9846c0864a07_prod_endpoint_0","http://empdir-nuwanbando.herokuapp.com"),
+    gateway:retrieveConfig("b29c3fa1-db9d-401a-abc3-a1dba08bd2d7_prod_endpoint_0","http://empdir-nuwanbando.herokuapp.com"),
     config = { 
     httpVersion: gateway:getHttpVersion()
 });
@@ -39,21 +39,6 @@ import wso2/gateway;
 
 
 
-
-@kubernetes:Deployment {
-    
-    name:"employee-svc",
-    image:"nuwanbando/employees:v1",
-    copyFiles:[
-      
-          {
-             source:"/Users/nuwanbando/dev/trunk/micro-gw/toolkit/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf", 
-             target:"/home/ballerina/conf/micro-gw.conf", 
-             isBallerinaConf:true 
-          }
-      
-    ]
-}
 
 
 
@@ -89,7 +74,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : ""}
-    resource function get_6975dc09_3fe8_401d_8731_728d5b289e35 (http:Caller outboundEp, http:Request req) {
+    resource function get_b38756ce_2873_43e7_bed9_a81e8058d238 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForSwagger_Employees_1_0_0(outboundEp, req);
     
     
@@ -180,7 +165,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : ""}
-    resource function get_229807ae_046d_4afa_ab9f_8187b8912d8b (http:Caller outboundEp, http:Request req) {
+    resource function get_a4549ed0_c410_4ca6_845f_5f16ce288c4d (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForSwagger_Employees_1_0_0(outboundEp, req);
     
     

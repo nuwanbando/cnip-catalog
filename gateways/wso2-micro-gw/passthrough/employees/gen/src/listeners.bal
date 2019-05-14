@@ -2,8 +2,8 @@ import wso2/gateway;
 import ballerina/http;
 import ballerina/log;
 
+import ballerinax/docker;
 
-import ballerinax/kubernetes;
 
 //Throttle tier data initiation
 
@@ -57,14 +57,25 @@ sslVerifyClient: config:getAsString("mutualSSLConfig.sslVerifyClient")
                                                                        };
 
 
-
-
-
-@kubernetes:Service {
-    
-    name:"employee-svc",
-    serviceType:"NodePort"
+@docker:Config {
+    name:"employees",
+    registry:"nuwanbando",
+    tag:"v1"
 }
+
+
+    @docker:CopyFiles {
+        files: [
+            
+                {  source:"/Users/nuwanbando/dev/trunk/micro-gw/toolkit/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf", 
+                   target:"/home/ballerina/conf/micro-gw.conf", 
+                   isBallerinaConf:true 
+                }
+            
+        ]
+    }
+
+
 
 listener gateway:APIGatewaySecureListener apiSecureListener = new(9095, secureServiceEndpointConfiguration);
 
@@ -75,19 +86,6 @@ http:ServiceEndpointConfiguration serviceEndpointConfiguration = {
                                                                  };
 
 
-@kubernetes:Ingress {
-    
-    name:"employee-svc",
-    hostname:"nuwanbando.com",
-    path:"/"
-}
-
-
-@kubernetes:Service {
-    
-    name:"employee-svc",
-    serviceType:"NodePort"
-}
 
 listener gateway:APIGatewayListener apiListener = new(9090, serviceEndpointConfiguration);
 
