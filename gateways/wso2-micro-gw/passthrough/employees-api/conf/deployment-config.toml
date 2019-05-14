@@ -16,7 +16,7 @@
   [docker.dockerCopyFiles]
     enable = true
     [[docker.dockerCopyFiles.files]]
-        source = "@env:{MGW_HOME}/resources/conf/micro-gw.conf"
+        source = "/home/travis/build/nuwanbando/cnip-catalog/gateways/wso2-micro-gw/passthrough/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf"
         target = '/home/ballerina/conf/micro-gw.conf'
         isBallerinaConf = true
 [kubernetes]
