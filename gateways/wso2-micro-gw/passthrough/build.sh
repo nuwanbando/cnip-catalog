@@ -14,13 +14,13 @@ echo $PATH
 
 micro-gw --help
 
-#micro-gw build employees
 
-micro-gw init emp
+micro-gw init employees
 
-cp employees/api_definitions/employees.yaml emp/api_definitions/
+cp employees-api/api_definitions/employees.yaml employees/api_definitions/
+cp employees-api/conf/deployment-config.toml employees/conf/
 
-micro-gw build emp
+micro-gw build employees
 
 tail -n 1000 ${MGW_HOME}/logs/microgw.log
 
