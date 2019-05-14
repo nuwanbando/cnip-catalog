@@ -9,7 +9,7 @@ import wso2/gateway;
 
 
     http:Client Swagger_Employees_1_0_0_prod = new (
-    gateway:retrieveConfig("80b0076c-40f6-47a7-a25e-c4ac37d4a6ee_prod_endpoint_0","http://empdir-nuwanbando.herokuapp.com"),
+    gateway:retrieveConfig("19bdae8b-bb23-4e1e-9e66-ac6a2019eb62_prod_endpoint_0","http://empdir-nuwanbando.herokuapp.com"),
     config = { 
     httpVersion: gateway:getHttpVersion()
 });
@@ -74,7 +74,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : ""}
-    resource function get_56106f70_77d1_44d4_84bd_e8379aed5d49 (http:Caller outboundEp, http:Request req) {
+    resource function get_9653cee5_6b38_4631_b459_fb5c980eec15 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForSwagger_Employees_1_0_0(outboundEp, req);
     
     
@@ -165,7 +165,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : ""}
-    resource function get_9ddeaa18_2031_40ad_971b_7e61a72a0cb3 (http:Caller outboundEp, http:Request req) {
+    resource function get_6c66f63d_480b_481c_aa44_0349c8b1c649 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForSwagger_Employees_1_0_0(outboundEp, req);
     
     

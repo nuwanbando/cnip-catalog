@@ -67,7 +67,7 @@ sslVerifyClient: config:getAsString("mutualSSLConfig.sslVerifyClient")
     @docker:CopyFiles {
         files: [
             
-                {  source:"/Users/nuwanbando/dev/trunk/micro-gw/toolkit/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf", 
+                {  source:"wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf", 
                    target:"/home/ballerina/conf/micro-gw.conf", 
                    isBallerinaConf:true 
                 }
