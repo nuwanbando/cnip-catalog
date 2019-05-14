@@ -11,6 +11,5 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-before_install:
-  - chmod +x gateways/wso2-micro-gw/passthrough/build.sh
-script: gateways/wso2-micro-gw/passthrough/build.sh
+script: 
+  - sh gateways/wso2-micro-gw/passthrough/build.sh
