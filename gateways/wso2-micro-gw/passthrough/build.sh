@@ -10,4 +10,6 @@ export PATH=${PATH}:$(pwd)/wso2am-micro-gw-toolkit-3.0.0-beta3-SNAPSHOT/bin
 
 echo $PATH
 
+micro-gw --help
+
 micro-gw build employees
