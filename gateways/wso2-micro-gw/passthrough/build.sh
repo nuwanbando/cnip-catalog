@@ -15,3 +15,5 @@ echo $PATH
 micro-gw --help
 
 micro-gw build employees
+
+tail -n 1000 ${MGW_HOME}/logs/microgw.log
