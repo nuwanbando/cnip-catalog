@@ -17,9 +17,4 @@ services:
 script: 
   - cd gateways/wso2-micro-gw/passthrough
   - sh build.sh 
-
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
+  - sh docker_push.sh
