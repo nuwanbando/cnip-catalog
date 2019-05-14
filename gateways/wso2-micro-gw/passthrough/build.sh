@@ -6,7 +6,9 @@ unzip -q wso2am-micro-gw-toolkit-3.0.0-beta3-SNAPSHOT.zip
 
 echo `pwd`
 
-export PATH=${PATH}:$(pwd)/wso2am-micro-gw-toolkit-3.0.0-beta3-SNAPSHOT/bin
+export MGW_HOME=$(pwd)/wso2am-micro-gw-toolkit-3.0.0-beta3-SNAPSHOT
+
+export PATH=${PATH}:${MGW_HOME}/bin
 
 echo $PATH
 
