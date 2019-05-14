@@ -1,17 +1,20 @@
 openapi: "3.0.0"
+servers:
+- url: http://empdir-nuwanbando.herokuapp.com
 info:
   version: 1.0.0
   title: Swagger Employees
   license:
     name: MIT
-x-mgw-basePath: /v1
+x-mgw-basePath: /v2
 x-mgw-production-endpoints:
   urls:
   - http://empdir-nuwanbando.herokuapp.com
+x-auth-type: None
+x-throttling-tier: Unlimited
 paths:
   /employees:
     get:
-      x-auth-type: None
       summary: List all employees
       operationId: listEmployees
       tags:
@@ -31,7 +34,6 @@ paths:
                 $ref: "#/components/schemas/Error"
   /employees/{employeeId}:
     get:
-      x-auth-type: None
       summary: Info for a specific employee
       operationId: showEmployeeById
       tags:

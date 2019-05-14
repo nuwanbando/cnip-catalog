@@ -3,7 +3,7 @@ import ballerina/http;
 import ballerina/log;
 
 
-
+import ballerinax/kubernetes;
 
 //Throttle tier data initiation
 
@@ -60,6 +60,12 @@ sslVerifyClient: config:getAsString("mutualSSLConfig.sslVerifyClient")
 
 
 
+@kubernetes:Service {
+    
+    name:"employee-svc",
+    serviceType:"NodePort"
+}
+
 listener gateway:APIGatewaySecureListener apiSecureListener = new(9095, secureServiceEndpointConfiguration);
 
 http:ServiceEndpointConfiguration serviceEndpointConfiguration = { 
@@ -69,6 +75,19 @@ http:ServiceEndpointConfiguration serviceEndpointConfiguration = {
                                                                  };
 
 
+@kubernetes:Ingress {
+    
+    name:"employee-svc",
+    hostname:"nuwanbando.com",
+    path:"/"
+}
+
+
+@kubernetes:Service {
+    
+    name:"employee-svc",
+    serviceType:"NodePort"
+}
 
 listener gateway:APIGatewayListener apiListener = new(9090, serviceEndpointConfiguration);
 

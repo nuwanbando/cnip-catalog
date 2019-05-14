@@ -1,8 +1,8 @@
 
 public function main() {
     
-    string[] Swagger_Employees_1_0_0_service = [ "get_0b11d9db_5403_4c1b_89d3_542386511364"
-                                , "get_f72a5ad2_71d6_42ea_b64c_e6715bde1fba"
+    string[] Swagger_Employees_1_0_0_service = [ "get_6975dc09_3fe8_401d_8731_728d5b289e35"
+                                , "get_229807ae_046d_4afa_ab9f_8187b8912d8b"
                                 ];
     gateway:populateAnnotationMaps("Swagger_Employees_1_0_0", Swagger_Employees_1_0_0, Swagger_Employees_1_0_0_service);
     

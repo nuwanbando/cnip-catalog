@@ -3,13 +3,13 @@ import ballerina/http;
 import ballerina/config;
 import ballerina/time;
 
-
+import ballerinax/kubernetes;
 
 import wso2/gateway;
 
 
     http:Client Swagger_Employees_1_0_0_prod = new (
-    gateway:retrieveConfig("ed42a810-99cb-4706-970b-1b3d5c727d86_prod_endpoint_0","http://empdir-nuwanbando.herokuapp.com"),
+    gateway:retrieveConfig("1b91c434-609a-41dc-be16-9846c0864a07_prod_endpoint_0","http://empdir-nuwanbando.herokuapp.com"),
     config = { 
     httpVersion: gateway:getHttpVersion()
 });
@@ -40,13 +40,28 @@ import wso2/gateway;
 
 
 
+@kubernetes:Deployment {
+    
+    name:"employee-svc",
+    image:"nuwanbando/employees:v1",
+    copyFiles:[
+      
+          {
+             source:"/Users/nuwanbando/dev/trunk/micro-gw/toolkit/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf", 
+             target:"/home/ballerina/conf/micro-gw.conf", 
+             isBallerinaConf:true 
+          }
+      
+    ]
+}
+
 
 
 
 
 
 @http:ServiceConfig {
-    basePath: "/v1",
+    basePath: "/v2",
     authConfig:{
     
         authProviders:["jwt","oauth2"]
@@ -69,18 +84,17 @@ apiSecureListener {
         authConfig:{
     
         authProviders:["jwt","oauth2"]
-     ,
-            authentication:{enabled:false}  
+      
 
         }
     }
     @gateway:RateLimit{policy : ""}
-    resource function get_0b11d9db_5403_4c1b_89d3_542386511364 (http:Caller outboundEp, http:Request req) {
+    resource function get_6975dc09_3fe8_401d_8731_728d5b289e35 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForSwagger_Employees_1_0_0(outboundEp, req);
     
     
     
-    string urlPostfix = untaint req.rawPath.replace("/v1","");
+    string urlPostfix = untaint req.rawPath.replace("/v2","");
     
         http:Response|error clientResponse;
         http:Response r = new;
@@ -161,18 +175,17 @@ apiSecureListener {
         authConfig:{
     
         authProviders:["jwt","oauth2"]
-     ,
-            authentication:{enabled:false}  
+      
 
         }
     }
     @gateway:RateLimit{policy : ""}
-    resource function get_f72a5ad2_71d6_42ea_b64c_e6715bde1fba (http:Caller outboundEp, http:Request req) {
+    resource function get_229807ae_046d_4afa_ab9f_8187b8912d8b (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForSwagger_Employees_1_0_0(outboundEp, req);
     
     
     
-    string urlPostfix = untaint req.rawPath.replace("/v1","");
+    string urlPostfix = untaint req.rawPath.replace("/v2","");
     
         http:Response|error clientResponse;
         http:Response r = new;

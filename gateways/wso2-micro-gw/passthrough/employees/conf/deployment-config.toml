@@ -21,8 +21,8 @@
         isBallerinaConf = false
 [kubernetes]
   [kubernetes.kubernetesDeployment]
-    enable = false
-    #name = ''
+    enable = true
+    name = 'employees-svc'
     #labels = ''
     #replicas = ''
     #enableLiveness = ''
@@ -30,15 +30,15 @@
     #periodSeconds = ''
     #livenessPort = ''
     #imagePullPolicy = ''
-    #image = ''
+    image = 'nuwanbando/employees:v1'
     #env = ''
-    #buildImage = ''
+    #buildImage = 'nuwanbando/employees'
     [kubernetes.kubernetesDeployment.copyFiles]
-        enable = false
+        enable = true
         [[kubernetes.kubernetesDeployment.copyFiles.files]]
-            source = ''
-            target = ''
-            isBallerinaConf = false
+            source = '/Users/nuwanbando/dev/trunk/micro-gw/toolkit/wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf'
+            target = '/home/ballerina/conf/micro-gw.conf'
+            isBallerinaConf = true
     #dockerHost = ''
     #dockerCertPath = ''
     #push = ''
@@ -47,18 +47,18 @@
     #baseImage = ''
     #singleYAML = ''
   [kubernetes.kubernetesService]
-    enable = false
-    #name = ''
+    enable = true
+    name = 'employees-svc'
     #labels = ''
-    #serviceType = ''
+    serviceType = 'NodePort'
     #port = ''
   [kubernetes.kubernetesIngress]
-    enable = false
-    #name = ''
+    enable = true
+    name = 'employees-svc'
     #labels = ''
-    #hostname = ''
+    hostname = 'nuwanbando.com'
     #annotations = ''
-    #path = ''
+    path = '/'
     #targetPath = ''
     #ingressClass = ''
   [kubernetes.secureKubernetesIngress]
