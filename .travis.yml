@@ -12,4 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 script: 
-  - sh gateways/wso2-micro-gw/passthrough/build.sh
+  - cd gateways/wso2-micro-gw/passthrough
+  - sh build.sh 
