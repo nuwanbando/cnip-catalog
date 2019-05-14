@@ -14,8 +14,16 @@ echo $PATH
 
 micro-gw --help
 
-micro-gw build employees
+#micro-gw build employees
+
+micro-gw init emp
+
+cp employees/api_definitions/employees.yaml emp/api_definitions/
+
+micro-gw build emp
 
 tail -n 1000 ${MGW_HOME}/logs/microgw.log
 
 docker images
+
+tree employees/
