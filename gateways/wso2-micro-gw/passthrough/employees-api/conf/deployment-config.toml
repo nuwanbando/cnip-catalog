@@ -1,6 +1,6 @@
 [docker]
   [docker.dockerConfig]
-    enable = false
+    enable = true
     name = 'employees'
     registry = 'nuwanbando'
     tag = 'v1'
@@ -14,11 +14,11 @@
     #username = ''
     #password = ''
   [docker.dockerCopyFiles]
-    enable = false
+    enable = true
     [[docker.dockerCopyFiles.files]]
         source = 'wso2am-micro-gw-toolkit-3.0.0-beta2/resources/conf/micro-gw.conf'
         target = '/home/ballerina/conf/micro-gw.conf'
-        isBallerinaConf = false
+        isBallerinaConf = true
 [kubernetes]
   [kubernetes.kubernetesDeployment]
     enable = false

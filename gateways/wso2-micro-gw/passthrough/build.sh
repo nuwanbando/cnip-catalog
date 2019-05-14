@@ -25,5 +25,3 @@ micro-gw build emp
 tail -n 1000 ${MGW_HOME}/logs/microgw.log
 
 docker images
-
-tree employees/
