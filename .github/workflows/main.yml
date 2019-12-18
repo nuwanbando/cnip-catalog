@@ -1,5 +1,5 @@
 on:
-  issues: {types: opened}
+  issues: {types: reopened}
 
 jobs:
   comment:
