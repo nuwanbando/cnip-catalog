@@ -1,5 +1,5 @@
 on:
-  issues: {types: open, commented}
+  issues: {types: open}
 
 jobs:
   comment:
@@ -11,4 +11,4 @@ jobs:
           script: |
             github.projects.createCard({...context.issue, column_id: 7472347, 
                                                           content_id: context.issue.number, 
-                                                          content_type: 'Issue'})
+                                                          content_type: 'issue'})
