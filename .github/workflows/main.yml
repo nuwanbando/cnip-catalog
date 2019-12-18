@@ -1,5 +1,5 @@
 on:
-  issues: {types: opened}
+  issues: {types: commented}
 
 jobs:
   comment:
@@ -9,8 +9,6 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            github.issues.createComment({...context.issue, body: '👋 Thanks for reporting!'})
-            github.issues.addLabels({...context.issue, labels: ['Triage']})
-            github.projects.createCard({...context.project, column_id: 7472347, 
+            github.projects.createCard({...context.issue, column_id: 7472347, 
                                                           content_id: context.issue.number, 
                                                           content_type: 'Issue'})
