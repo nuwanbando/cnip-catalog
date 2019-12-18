@@ -1,0 +1,13 @@
+- name: GitHub Script
+  uses: actions/github-script@0.3.0
+  with:
+    # The script to run
+    script: 
+    # The GitHub token used to create an authenticated client
+    github-token: 
+    # Whether to tell the GitHub client to log details of its requests
+    debug: # optional
+    # An optional user-agent string
+    user-agent: # optional, default is actions/github-script
+    # A comma-separated list of API previews to accept
+    previews: # optional
