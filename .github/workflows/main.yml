@@ -10,3 +10,4 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.createComment({...context.issue, body: '👋 Thanks for reporting!'})
+            github.issues.addLabels({...context.issue, labels: ['Triage']})
