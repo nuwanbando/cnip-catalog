@@ -11,6 +11,6 @@ jobs:
           script: |
             console.log('test: '+ context.payload.issue.id)
             github.projects.createCard({...context.issue, column_id: 7472347, 
-                                                          content_id: context.issue.number, 
+                                                          content_id: context.payload.issue.id, 
                                                           content_type: 'issue'})
                                                           
