@@ -9,9 +9,6 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const opts = github.issues.listForRepo.endpoint.merge({
-              ...context.issue,
-              number: context.issue.number
-            })
-            
-            console.log(opts)
+            github.projects.createCard({...context.issue, column_id: 7472347, 
+                                                          content_id: context.issue.number, 
+                                                          content_type: 'issue'})
