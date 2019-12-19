@@ -9,7 +9,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(context.issue)
+            console.log(context.payload.issue.id)
             github.projects.createCard({...context.issue, column_id: 7472347, 
                                                           content_id: context.issue.number, 
                                                           content_type: 'issue'})
